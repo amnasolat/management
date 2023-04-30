@@ -1,0 +1,81 @@
+package com.springboot.management.service;
+
+import com.springboot.management.dto.AssessmentDto;
+import com.springboot.management.dto.CourseDto;
+import com.springboot.management.dto.DepartmentDto;
+import com.springboot.management.entity.Assessment;
+import com.springboot.management.entity.Course;
+import com.springboot.management.entity.Department;
+import com.springboot.management.mapper.AssessmentMapper;
+import com.springboot.management.repository.AssessmentRepository;
+import com.springboot.management.repository.CourseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class AssessmentService {
+    @Autowired
+    private AssessmentRepository assessmentRepository;
+    @Autowired
+    private AssessmentMapper assessmentMapper;
+    public AssessmentDto saveAssessment(AssessmentDto assessmentDto){
+        Assessment assessment=assessmentMapper.dtoToEntity(assessmentDto);
+        assessment=assessmentRepository.save(assessment);
+        return assessmentMapper.entityToDto(assessment);
+    }
+    public List<AssessmentDto> saveAssessments(List<AssessmentDto> assessmentDtos){
+        List<Assessment> assessments=assessmentMapper.dtoToEntity(assessmentDtos);
+        assessments=assessmentRepository.saveAll(assessments);
+        return assessmentMapper.entityToDto(assessments);
+    }
+   public List<AssessmentDto> getAssessments(){
+        List<AssessmentDto> assessmentDtos=new ArrayList<>();
+        List<Assessment> assessmentList=assessmentRepository.findAllNotDeleted();
+        for(Assessment assessment: assessmentList){
+            AssessmentDto assessmentDto=assessmentMapper.entityToDto(assessment);
+            assessmentDtos.add(assessmentDto);
+        }
+        return assessmentDtos;
+   }
+   public AssessmentDto getAssessmentById(AssessmentDto assessmentDto){
+        int id=assessmentDto.getAssessmentId();
+        Assessment assessment=assessmentRepository.findByIdNotDeleted(id);
+        return assessmentMapper.entityToDto(assessment);
+   }
+   public List<AssessmentDto> getAssessmentByName(AssessmentDto assessmentDto){
+        String name=assessmentDto.getAssessmentName();
+        List<Assessment> assessments=assessmentRepository.findByAssessmentName(name);
+        return assessmentMapper.entityToDto(assessments);
+   }
+   public AssessmentDto deleteAssessment(AssessmentDto assessmentDto){
+        if(assessmentDto!=null && assessmentDto.getAssessmentId()>0){
+            int id=assessmentDto.getAssessmentId();
+            Assessment assessment=assessmentRepository.findByIdNotDeleted(id);
+            if(assessment!=null){
+                assessment.setDeleted(true);
+                assessmentRepository.save(assessment);
+                assessmentDto.setDeleteStatus("Record Deleted");
+            }else{
+                assessmentDto.setDeleteStatus("Record Not Found");
+            }
+        }else {
+            assessmentDto=new AssessmentDto();
+            assessmentDto.setDeleteStatus("Data Irrelevant");
+        }
+        return assessmentDto;
+   }
+
+   public AssessmentDto updateAssessment(AssessmentDto assessmentDto) {
+       Assessment existingAssessment = assessmentRepository.findByIdNotDeleted(assessmentDto.getAssessmentId());
+       existingAssessment.setAssessmentName(assessmentDto.getAssessmentName());
+       existingAssessment.setTotalMarks(assessmentDto.getTotalMarks());
+       assessmentRepository.save(existingAssessment);
+       return assessmentMapper.entityToDto(existingAssessment);
+
+   }
+
+
+}
