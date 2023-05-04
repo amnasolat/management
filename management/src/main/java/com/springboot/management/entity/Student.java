@@ -1,6 +1,7 @@
 package com.springboot.management.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -10,6 +11,8 @@ import lombok.NoArgsConstructor;
 
 
 import java.util.Date;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,7 +32,13 @@ public class Student extends BaseEntity{
     @JsonIncludeProperties("address")
     @JoinColumn(name = "fk_address_id",referencedColumnName = "addressId")
     private Address address;
-
+    @ManyToOne
+    @JsonIgnoreProperties("students")
+    @JoinColumn(name = "fk_department_id",referencedColumnName = "departmentId")
+    private Department department;
+    @OneToMany(mappedBy = "student")
+    @JsonIgnoreProperties("student")
+    private List<StudentCourse> studentCourses;
 
 
 //    @ManyToOne(cascade =CascadeType.ALL )

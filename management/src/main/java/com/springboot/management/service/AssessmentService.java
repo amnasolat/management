@@ -7,8 +7,11 @@ import com.springboot.management.entity.Assessment;
 import com.springboot.management.entity.Course;
 import com.springboot.management.entity.Department;
 import com.springboot.management.mapper.AssessmentMapper;
+import com.springboot.management.mapper.CourseMapper;
+import com.springboot.management.mapper.DepartmentMapper;
 import com.springboot.management.repository.AssessmentRepository;
 import com.springboot.management.repository.CourseRepository;
+import com.springboot.management.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +24,36 @@ public class AssessmentService {
     private AssessmentRepository assessmentRepository;
     @Autowired
     private AssessmentMapper assessmentMapper;
-    public AssessmentDto saveAssessment(AssessmentDto assessmentDto){
-        Assessment assessment=assessmentMapper.dtoToEntity(assessmentDto);
-        assessment=assessmentRepository.save(assessment);
-        return assessmentMapper.entityToDto(assessment);
+    @Autowired
+    private CourseRepository courseRepository;
+    @Autowired
+    private CourseMapper courseMapper;
+    @Autowired
+    private DepartmentRepository departmentRepository;
+    @Autowired
+    private DepartmentMapper departmentMapper;
+
+    public AssessmentDto saveAssessment(AssessmentDto assessmentDto) {
+        if (assessmentDto.getCourseDto() != null && assessmentDto.getCourseDto().getCourseId() > 0) {
+            Course course = courseRepository.findByIdNotDeleted(assessmentDto.getCourseDto().getCourseId());
+            int id=course.getDepartment().getDepartmentId();
+            Department department=departmentRepository.findByIdNotDeleted(id);
+            Assessment assessment = assessmentMapper.dtoToEntity(assessmentDto);
+            course.setDepartment(department);
+            assessment.setCourse(course);
+
+            assessment = assessmentRepository.save(assessment);
+            AssessmentDto assessmentDto1 = assessmentMapper.entityToDto(assessment);
+            CourseDto courseDto = courseMapper.entityToDto(course);
+            DepartmentDto departmentDto=departmentMapper.entityToDto(department);
+            courseDto.setDepartmentDto(departmentDto);
+            assessmentDto1.setCourseDto(courseDto);
+            return assessmentDto1;
+        }else {
+           AssessmentDto assessmentDto1=new AssessmentDto();
+           return assessmentDto1;
+
+        }
     }
     public List<AssessmentDto> saveAssessments(List<AssessmentDto> assessmentDtos){
         List<Assessment> assessments=assessmentMapper.dtoToEntity(assessmentDtos);

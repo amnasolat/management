@@ -12,4 +12,5 @@ public class AssessmentDto {
     private String assessmentName;
     private int totalMarks;
     private String deleteStatus;
+    CourseDto courseDto;
 }

@@ -1,9 +1,7 @@
 package com.springboot.management.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +16,12 @@ public class StudentCourseAssessment extends BaseEntity {
     @GeneratedValue
     private int studentCourseAssessmentId;
     private int obtainedMarks;
+    @ManyToOne
+    @JsonIgnoreProperties("studentCourseAssessments")
+    @JoinColumn(name = "fk_student_course_id",referencedColumnName = "studentCourseId")
+    private StudentCourse studentCourse;
+    @ManyToOne
+    @JsonIgnoreProperties("studentCourseAssessments")
+    @JoinColumn(name = "fk_assessment_id",referencedColumnName = "assessmentId")
+    private Assessment assessment;
 }

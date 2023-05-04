@@ -21,6 +21,7 @@ public class StudentDto {
     private String deleteStatus;
 
     AddressDto addressDto;
+    DepartmentDto departmentDto;
 
     }
 

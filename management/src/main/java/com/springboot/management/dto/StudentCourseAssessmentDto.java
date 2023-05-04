@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class StudentCourseAssessmentDto {
     private int studentCourseAssessmentId;
     private int obtainedMarks;
+    StudentCourseDto studentCourseDto;
 }

@@ -15,7 +15,7 @@ public class AssessmentMapper {
         assessmentDto.setAssessmentId(assessment.getAssessmentId());
         assessmentDto.setAssessmentName(assessment.getAssessmentName());
         assessmentDto.setTotalMarks(assessment.getTotalMarks());
-        assessmentDto.setDeleteStatus(assessment.getDeleteStatus());
+
         return assessmentDto;
     }
     public Assessment dtoToEntity(AssessmentDto assessmentDto){
@@ -23,7 +23,7 @@ public class AssessmentMapper {
         assessment.setAssessmentId(assessmentDto.getAssessmentId());
         assessment.setAssessmentName(assessmentDto.getAssessmentName());
         assessment.setTotalMarks(assessmentDto.getTotalMarks());
-        assessment.setDeleteStatus(assessmentDto.getDeleteStatus());
+
         return assessment;
     }
     public List<AssessmentDto> entityToDto(List<Assessment> assessments){

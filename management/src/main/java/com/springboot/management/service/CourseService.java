@@ -5,7 +5,9 @@ import com.springboot.management.dto.DepartmentDto;
 import com.springboot.management.entity.Course;
 import com.springboot.management.entity.Department;
 import com.springboot.management.mapper.CourseMapper;
+import com.springboot.management.mapper.DepartmentMapper;
 import com.springboot.management.repository.CourseRepository;
+import com.springboot.management.repository.DepartmentRepository;
 import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +21,27 @@ public class CourseService {
     private CourseRepository courseRepository;
     @Autowired
     private CourseMapper courseMapper;
-    public CourseDto saveCourse(CourseDto courseDto){
-        Course course=courseMapper.dtoToEntity(courseDto);
-        course=courseRepository.save(course);
-        return courseMapper.entityToDto(course);
+    @Autowired
+    private DepartmentRepository departmentRepository;
+    @Autowired
+    private DepartmentMapper departmentMapper;
+
+    public CourseDto saveCourse(CourseDto courseDto) {
+        if (courseDto.getDepartmentDto() != null && courseDto.getDepartmentDto().getDepartmentId() > 0) {
+            Department department=departmentRepository.findByIdNotDeleted(courseDto.getDepartmentDto().getDepartmentId());
+            Course course = courseMapper.dtoToEntity(courseDto);
+            course.setDepartment(department);
+            course = courseRepository.save(course);
+
+            CourseDto courseDto1= courseMapper.entityToDto(course);
+            DepartmentDto departmentDto=departmentMapper.entityToDto(department);
+            courseDto1.setDepartmentDto(departmentDto);
+            return courseDto1;
+
+        }else{
+          CourseDto courseDto1=new CourseDto();
+            return courseDto1;
+        }
     }
     public List<CourseDto> saveCourses(List<CourseDto> courseDtos){
         List<Course> courses=courseMapper.dtoToEntity(courseDtos);

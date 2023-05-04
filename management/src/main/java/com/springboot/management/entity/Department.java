@@ -1,6 +1,7 @@
 package com.springboot.management.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +20,12 @@ public class Department extends BaseEntity{
     @GeneratedValue
     private Integer departmentId;
     private String departmentName;
-//    private String deleteStatus;
+    @OneToMany(mappedBy = "department")
+    @JsonIgnoreProperties("department")
+    private List<Student> students;
+    @OneToMany(mappedBy = "department")
+    @JsonIgnoreProperties("department")
+    private List<Course> courses;
 
 
 

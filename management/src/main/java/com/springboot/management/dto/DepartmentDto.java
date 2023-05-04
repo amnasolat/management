@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepartmentDto {
-    private int departmentId;
+    private Integer departmentId;
     private String departmentName;
     private String deleteStatus;
 

@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b75c8e4-40c9-4c4f-bc61-573c275fc52b" name="Changes" comment="" />
+    <list default="true" id="6b75c8e4-40c9-4c4f-bc61-573c275fc52b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/AssessmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/AssessmentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/CourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/CourseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/DepartmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/DepartmentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseAssessmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseAssessmentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Assessment.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Assessment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourseAssessment.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourseAssessment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/mapper/AssessmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/mapper/AssessmentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/AssessmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/AssessmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +41,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
   </component>
@@ -35,6 +58,7 @@
     </option>
   </component>
   <component name="ProjectId" id="2OBU6bhaKBrztX8S5wGPTLrEWIL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -110,6 +134,10 @@
       <workItem from="1682571391695" duration="27892000" />
       <workItem from="1682658925845" duration="27966000" />
       <workItem from="1682754485555" duration="1389000" />
+      <workItem from="1682883325644" duration="2572000" />
+      <workItem from="1682960049329" duration="1681000" />
+      <workItem from="1683002293557" duration="29143000" />
+      <workItem from="1683090214699" duration="25468000" />
     </task>
     <servers />
   </component>
@@ -136,33 +164,9 @@
           <option name="timeStamp" value="75" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/AddressService.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/DepartmentService.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/DepartmentService.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.0.7/spring-beans-6.0.7.jar!/org/springframework/beans/factory/support/ConstructorResolver.class</url>
           <line>639</line>
           <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/AddressService.java</url>
-          <line>37</line>
-          <properties class="com.springboot.management.service.AddressService" method="getAddressById">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

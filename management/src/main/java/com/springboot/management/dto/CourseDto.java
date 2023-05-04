@@ -11,4 +11,5 @@ public class CourseDto {
     private int courseId;
     private String courseName;
     private String deleteStatus;
+    DepartmentDto departmentDto;
 }
