@@ -16,7 +16,7 @@ import java.util.List;
 public class Course extends BaseEntity{
     @Id
     @GeneratedValue
-    private int courseId;
+    private Integer courseId;
     private String courseName;
     @ManyToOne
     @JsonIgnoreProperties("courses")

@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b75c8e4-40c9-4c4f-bc61-573c275fc52b" name="Changes" comment="student Enrollment functionality added.">
-      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseAssessmentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseAssessmentService.java" afterDir="false" />
+    <list default="true" id="6b75c8e4-40c9-4c4f-bc61-573c275fc52b" name="Changes" comment="student marks functionality added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseAssessmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseAssessmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/DepartmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/DepartmentDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseAssessmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseAssessmentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/mapper/AssessmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/mapper/AssessmentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/StudentCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/StudentCourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseAssessmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseAssessmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +133,8 @@
       <workItem from="1682960049329" duration="1681000" />
       <workItem from="1683002293557" duration="29143000" />
       <workItem from="1683090214699" duration="25468000" />
-      <workItem from="1683175769476" duration="9199000" />
+      <workItem from="1683175769476" duration="25197000" />
+      <workItem from="1683262593123" duration="13419000" />
     </task>
     <task id="LOCAL-00001" summary="student Enrollment functionality added.">
       <created>1683177518069</created>
@@ -133,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683177518069</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="student marks functionality added.">
+      <created>1683190270581</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683190270582</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +158,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="student Enrollment functionality added." />
-    <option name="LAST_COMMIT_MESSAGE" value="student Enrollment functionality added." />
+    <MESSAGE value="student marks functionality added." />
+    <option name="LAST_COMMIT_MESSAGE" value="student marks functionality added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

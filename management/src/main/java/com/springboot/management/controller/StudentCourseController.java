@@ -1,6 +1,7 @@
 package com.springboot.management.controller;
 
 import com.springboot.management.dto.StudentCourseDto;
+import com.springboot.management.dto.StudentDto;
 import com.springboot.management.service.StudentCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,5 +22,9 @@ public class StudentCourseController {
     @PostMapping("/EnrollmentInMultipleCourses")
     public List<StudentCourseDto> studentEnrollmentInMultipleCourses(@RequestBody StudentCourseDto studentCourseDto){
         return studentCourseService.saveStudentCourses(studentCourseDto);
+    }
+    @PostMapping("/CoursesByStudentId")
+    public List<StudentCourseDto> findAllCoursesByStudentId(@RequestBody StudentDto studentDto){
+        return  studentCourseService.getCoursesbyStudentId(studentDto);
     }
 }

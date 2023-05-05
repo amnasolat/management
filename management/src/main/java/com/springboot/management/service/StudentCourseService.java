@@ -36,30 +36,37 @@ public class StudentCourseService {
             throw new RuntimeException("Please Provide Student and Course you want to assign");
         } else {
             StudentCourse studentCourse = studentCourseMapper.dtoToEntity(studentCourseDto);
-            int StdId = studentCourseDto.getStudentDto().getStudentId();
-            Student student = studentRepository.findByIdNotDeleted(StdId);
+            int stdId = studentCourseDto.getStudentDto().getStudentId();
+            Student student = studentRepository.findByIdNotDeleted(stdId);
             int courId = studentCourseDto.getCourseDto().getCourseId();
             Course course = courseRepository.findByIdNotDeleted(courId);
             if (student != null && course != null) {
-                Address address = student.getAddress();
-                Department department = student.getDepartment();
-                Department department1 = course.getDepartment();
-                studentCourse.setStudent(student);
-                studentCourse.setCourse(course);
-                studentCourse = studentCourseRepository.save(studentCourse);
-                studentCourseDto = studentCourseMapper.entityToDto(studentCourse);
-                StudentDto studentDto = studentMapper.entityToDto(student);
-                AddressDto addressDto = addressMapper.entityToDto(address);
-                DepartmentDto departmentDto = departmentMapper.entityToDto(department);
-                DepartmentDto departmentDto1 = departmentMapper.entityToDto(department1);
-                CourseDto courseDto = courseMapper.entityToDto(course);
-                courseDto.setDepartmentDto(departmentDto1);
-                studentDto.setAddressDto(addressDto);
-                studentDto.setDepartmentDto(departmentDto);
-                studentCourseDto.setStudentDto(studentDto);
-                studentCourseDto.setCourseDto(courseDto);
-                return studentCourseDto;
-            } else {
+                StudentCourse check = studentCourseRepository.findDuplicateRecords(stdId, courId);
+                if (check == null) {
+                    Address address = student.getAddress();
+                    Department department = student.getDepartment();
+                    Department department1 = course.getDepartment();
+                    studentCourse.setStudent(student);
+                    studentCourse.setCourse(course);
+                    studentCourse = studentCourseRepository.save(studentCourse);
+                    studentCourseDto = studentCourseMapper.entityToDto(studentCourse);
+                    StudentDto studentDto = studentMapper.entityToDto(student);
+                    AddressDto addressDto = addressMapper.entityToDto(address);
+                    DepartmentDto departmentDto = departmentMapper.entityToDto(department);
+                    DepartmentDto departmentDto1 = departmentMapper.entityToDto(department1);
+                    CourseDto courseDto = courseMapper.entityToDto(course);
+                    courseDto.setDepartmentDto(departmentDto1);
+                    studentDto.setAddressDto(addressDto);
+                    studentDto.setDepartmentDto(departmentDto);
+                    studentCourseDto.setStudentDto(studentDto);
+                    studentCourseDto.setCourseDto(courseDto);
+                    return studentCourseDto;
+                } else {
+                    throw new RuntimeException("Student already Registered in this course");
+
+                }
+            }else
+            {
                 throw new RuntimeException("Student or Course you have chosen isn't exist");
             }
         }
@@ -69,47 +76,77 @@ public class StudentCourseService {
         if (studentCourseDto.getStudentDto() == null) {
             throw new RuntimeException("Please Provide Student and Course you want to assign");
         } else {
+            Integer stdId = studentCourseDto.getStudentDto().getStudentId();
 
-            Student student = studentRepository.findByIdNotDeleted(studentCourseDto.getStudentDto().getStudentId());
+            Student student = studentRepository.findByIdNotDeleted(stdId);
             if (student != null) {
                 List<StudentCourseDto> studentCourseDtoList = new ArrayList<>();
 
-
                 for (Integer courseId : studentCourseDto.getCourseId()) {
-                    Course course1 = courseRepository.findByIdNotDeleted(courseId);
-                    List<Integer> id=new ArrayList<>();
-                    StudentCourse studentCourse1=new StudentCourse();
-                    studentCourse1.setStudent(student);
-                    studentCourse1.setCourse(course1);
-                    studentCourse1 = studentCourseRepository.save(studentCourse1);
-                    studentCourseDto = studentCourseMapper.entityToDto(studentCourse1);
-                    StudentDto studentDto = studentMapper.entityToDto(student);
-                    CourseDto courseDto = courseMapper.entityToDto(course1);
-                    studentCourseDto.setStudentDto(studentDto);
-                    studentCourseDto.setCourseDto(courseDto);
-                    id.add(courseId);
-                    studentCourseDto.setCourseId(id);
-                    studentCourseDtoList.add(studentCourseDto);
+                    StudentCourse check = studentCourseRepository.findDuplicateRecords(stdId, courseId);
+                    if (check == null) {
+                        Course course1 = courseRepository.findByIdNotDeleted(courseId);
+                        List<Integer> id = new ArrayList<>();
+                        StudentCourse studentCourse1 = new StudentCourse();
+                        studentCourse1.setStudent(student);
+                        studentCourse1.setCourse(course1);
+                        studentCourse1 = studentCourseRepository.save(studentCourse1);
+                        studentCourseDto = studentCourseMapper.entityToDto(studentCourse1);
+                        StudentDto studentDto = studentMapper.entityToDto(student);
+                        CourseDto courseDto = courseMapper.entityToDto(course1);
+                        studentCourseDto.setStudentDto(studentDto);
+                        studentCourseDto.setCourseDto(courseDto);
+                        id.add(courseId);
+                        studentCourseDto.setCourseId(id);
+                        studentCourseDtoList.add(studentCourseDto);
+
+                    } else  {
+                        throw new RuntimeException("Student already Registered in this course");
+                    }
 
                 }
                 return studentCourseDtoList;
-            }else {
+            } else {
                 throw new RuntimeException("Student or Courses you have chosen aren't exist");
-        }
+            }
 
+        }
     }
 
-}
 
-    public List<StudentCourseDto> getStudentCourses() {
-        List<StudentCourseDto> studentCourseDtos = new ArrayList<>();
+    public List<StudentCourseDto> getCoursesbyStudentId(StudentDto studentDto) {
+        int id1 = studentDto.getStudentId();
         List<StudentCourse> studentCourseList = studentCourseRepository.findAllNotDeleted();
+        //  List<StudentCourse> Data = new ArrayList<>();
+        List<StudentCourseDto> studentCourseDtos = new ArrayList<>();
         for (StudentCourse studentCourse : studentCourseList) {
-            StudentCourseDto studentCourseDto = studentCourseMapper.entityToDto(studentCourse);
-            studentCourseDtos.add(studentCourseDto);
+            int id2 = studentCourse.getStudent().getStudentId();
+            if (id1 == id2) {
+               Student student= studentCourse.getStudent();
+               Course course=studentCourse.getCourse();
+               Department department=course.getDepartment();
+//               StudentDto studentDto1=studentMapper.entityToDto(student);
+               CourseDto courseDto=courseMapper.entityToDto(course);
+               DepartmentDto departmentDto=departmentMapper.entityToDto(department);
+                StudentCourseDto studentCourseDto = studentCourseMapper.entityToDto(studentCourse);
+//                studentCourseDto.setStudentDto(studentDto1);
+                courseDto.setDepartmentDto(departmentDto);
+                studentCourseDto.setCourseDto(courseDto);
+                studentCourseDtos.add(studentCourseDto);
+
+            }
         }
         return studentCourseDtos;
     }
+
+//        List<StudentCourseDto> studentCourseDtos = new ArrayList<>();
+//        List<StudentCourse> studentCourseList = studentCourseRepository.findAllNotDeleted();
+//        for (StudentCourse studentCourse : studentCourseList) {
+//            StudentCourseDto studentCourseDto = studentCourseMapper.entityToDto(studentCourse);
+//            studentCourseDtos.add(studentCourseDto);
+//        }
+//        return studentCourseDtos;
+//    }
 
 
 

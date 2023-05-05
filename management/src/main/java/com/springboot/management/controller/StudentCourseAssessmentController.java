@@ -8,12 +8,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class StudentCourseAssessmentController {
     @Autowired
     private StudentCourseAssessmentService studentCourseAssessmentService;
-    @PostMapping("/studentMarks")
-    public StudentCourseAssessmentDto StudentAssessmentCourseMarks(@RequestBody StudentCourseAssessmentDto studentCourseAssessmentDto){
+    @PostMapping("/assignAssessment")
+    public StudentCourseAssessmentDto assignStudentAssessment(@RequestBody StudentCourseAssessmentDto studentCourseAssessmentDto){
         return studentCourseAssessmentService.saveStudentCourseAssessment(studentCourseAssessmentDto);
+    }
+    @PostMapping("/assignMultipleAssessment")
+    public List<StudentCourseAssessmentDto>  assignStudentMultipleAssessments(@RequestBody StudentCourseAssessmentDto studentCourseAssessmentDto){
+        return studentCourseAssessmentService.saveStudentCourseAssessments(studentCourseAssessmentDto);
+
     }
 }

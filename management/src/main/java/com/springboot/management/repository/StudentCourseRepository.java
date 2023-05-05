@@ -11,6 +11,9 @@ import java.util.List;
 
 @Repository
 public interface StudentCourseRepository extends JpaRepository<StudentCourse,Integer> {
+    @Query("select a from StudentCourse a where a.student.studentId =:studentId and a.course.courseId =:courseId")
+    StudentCourse findDuplicateRecords(@Param("studentId") Integer studentId, @Param("courseId") Integer courseId);
+
     @Query("select a from StudentCourse a where a.isDeleted = false or a.isDeleted is null")
     List<StudentCourse> findAllNotDeleted();
     @Query("select a from StudentCourse a where (a.isDeleted =false or a.isDeleted is null) and a.studentCourseId = :studentCourseId")

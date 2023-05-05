@@ -1,9 +1,8 @@
 package com.springboot.management.controller;
 
+
 import com.springboot.management.dto.StudentDto;
-import com.springboot.management.entity.Student;
-//import com.springboot.management.mapper.StudentMapper;
-import com.springboot.management.repository.StudentRepository;
+
 import com.springboot.management.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +44,6 @@ public class StudentController {
     public StudentDto deleteStudent(@RequestBody StudentDto studentDto){
         return service.deleteStudent(studentDto);
     }
+
 
 }

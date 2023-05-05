@@ -15,6 +15,9 @@ import com.springboot.management.repository.StudentCourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class StudentCourseAssessmentService {
     private final StudentCourseRepository studentCourseRepository;
@@ -37,7 +40,7 @@ public class StudentCourseAssessmentService {
 
     public StudentCourseAssessmentDto saveStudentCourseAssessment(StudentCourseAssessmentDto studentCourseAssessmentDto){
         if(studentCourseAssessmentDto.getAssessmentDto()==null && studentCourseAssessmentDto.getStudentCourseDto()==null){
-            throw new RuntimeException("Please provide Student and the Course which you want to assign the obtained marks");
+            throw new RuntimeException("Please provide Student and the Course which you want to assign Assessment");
         }else{
             int id=studentCourseAssessmentDto.getStudentCourseDto().getStudentCourseId();
             StudentCourse studentCourse=studentCourseRepository.findByIdNotDeleted(id);
@@ -59,6 +62,36 @@ public class StudentCourseAssessmentService {
 
             }
         }
+    }
+    public List<StudentCourseAssessmentDto> saveStudentCourseAssessments(StudentCourseAssessmentDto studentCourseAssessmentDto){
+        if(studentCourseAssessmentDto.getStudentCourseDto()==null){
+            throw new RuntimeException("Please provide Student and the Course which you want to assign Assessments");
+        }else {
+            int id=studentCourseAssessmentDto.getStudentCourseDto().getStudentCourseId();
+            StudentCourse studentCourse=studentCourseRepository.findByIdNotDeleted(id);
+            if(studentCourse!=null){
+                List<StudentCourseAssessmentDto> studentCourseAssessmentDtosList=new ArrayList<>();
+                for(Integer assessmentId:studentCourseAssessmentDto.getAssessmentId()){
+                    Assessment assessment=assessmentRepository.findByIdNotDeleted(assessmentId);
+                    StudentCourseAssessment studentCourseAssessment=new StudentCourseAssessment();
+                    studentCourseAssessment.setAssessment(assessment);
+                    studentCourseAssessment.setStudentCourse(studentCourse);
+                    studentCourseAssessment=studentCourseAssessmentRepository.save(studentCourseAssessment);
+                   studentCourseAssessmentDto=studentCourseAssessmentMapper.entityToDto(studentCourseAssessment);
+                   StudentCourseDto studentCourseDto=studentCourseMapper.entityToDto(studentCourse);
+                   AssessmentDto assessmentDto=assessmentMapper.entityToDto(assessment);
+                   studentCourseAssessmentDto.setStudentCourseDto(studentCourseDto);
+                   studentCourseAssessmentDto.setAssessmentDto(assessmentDto);
+                   studentCourseAssessmentDtosList.add(studentCourseAssessmentDto);
+                }
+                return studentCourseAssessmentDtosList;
+            }else {
+                throw new RuntimeException("Irrelevant Data");
+            }
+
+
+        }
+
     }
 
 }

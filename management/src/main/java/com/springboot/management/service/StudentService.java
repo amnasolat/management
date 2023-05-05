@@ -87,7 +87,6 @@ public class StudentService {
             AddressDto addressDto=addressMapper.entityToDto(address);
             Department department=student.getDepartment();
             DepartmentDto departmentDto=departmentMapper.entityToDto(department);
-
             studentDto1.setAddressDto(addressDto);
             studentDto1.setDepartmentDto(departmentDto);
             return studentDto1;
