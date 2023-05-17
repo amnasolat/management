@@ -2,13 +2,13 @@ package com.springboot.management.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = "student")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -29,4 +29,8 @@ public class StudentCourse extends BaseEntity{
     @OneToMany(mappedBy = "studentCourse")
     @JsonIgnoreProperties("studentCourse")
     private List<StudentCourseAssessment> studentCourseAssessments;
+    @ManyToOne
+    @JsonIgnoreProperties("studentCourses")
+    @JoinColumn(name = "fk_semester_id",referencedColumnName = "semesterId")
+    private Semester semester;
 }

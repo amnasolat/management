@@ -13,6 +13,6 @@ import java.util.List;
 public interface StudentCourseAssessmentRepository extends JpaRepository<StudentCourseAssessment,Integer> {
     @Query("select a from StudentCourseAssessment a where (a.isDeleted =false or a.isDeleted is null) and a.studentCourseAssessmentId=:studentCourseAssessmentId")
     StudentCourseAssessment findByIdNotDeleted(@Param("studentCourseAssessmentId") Integer studentCourseAssessmentId);
-    @Query("select a from Course a where a.isDeleted=false or a.isDeleted is null ")
+    @Query("select a from StudentCourseAssessment a where a.isDeleted=false or a.isDeleted is null ")
     List<StudentCourseAssessment> findAllNotDeleted();
 }

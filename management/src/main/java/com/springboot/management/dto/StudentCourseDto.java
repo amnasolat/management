@@ -1,13 +1,13 @@
 package com.springboot.management.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@ToString(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -17,4 +17,5 @@ public class StudentCourseDto {
     StudentDto studentDto;
     CourseDto courseDto;
     List<Integer> courseId;
+    SemesterDto semesterDto;
 }

@@ -15,8 +15,7 @@ import com.springboot.management.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class AssessmentService {
@@ -104,6 +103,39 @@ public class AssessmentService {
        assessmentRepository.save(existingAssessment);
        return assessmentMapper.entityToDto(existingAssessment);
 
+   }
+   public List<AssessmentDto> saveAllCoursesAssessments(){
+        List<AssessmentDto> assessmentDtoList=new ArrayList<>();
+        List<Course> courseList=courseRepository.findAllNotDeleted();
+       Map<String, Integer> assessmentType = new LinkedHashMap<>();
+       assessmentType.put("Quiz 1", 10);
+       assessmentType.put("Quiz 2",10);
+       assessmentType.put("Quiz 3",10);
+       assessmentType.put("Quiz 4",10);
+       assessmentType.put("Assignment 1",10);
+       assessmentType.put("Assignment 2",10);
+       assessmentType.put("Assignment 3",10);
+       assessmentType.put("Mid-Term Exam",25);
+       assessmentType.put("Final Exam",50);
+        for(Course course:courseList){
+//            Integer corId=course.getCourseId();
+            for(Map.Entry<String,Integer> entry: assessmentType.entrySet()){
+                String assessmentName = entry.getKey();
+                int totalMarks = entry.getValue();
+                Assessment assessment=new Assessment();
+                assessment.setAssessmentName(assessmentName);
+                assessment.setTotalMarks(totalMarks);
+                assessment.setCourse(course);
+                assessment=assessmentRepository.save(assessment);
+                CourseDto courseDto=courseMapper.entityToDto(course);
+                AssessmentDto assessmentDto=assessmentMapper.entityToDto(assessment);
+                assessmentDto.setCourseDto(courseDto);
+                assessmentDtoList.add(assessmentDto);
+            }
+
+
+        }
+        return assessmentDtoList;
    }
 
 

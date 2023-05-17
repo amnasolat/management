@@ -4,21 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b75c8e4-40c9-4c4f-bc61-573c275fc52b" name="Changes" comment="student marks functionality added.">
+    <list default="true" id="6b75c8e4-40c9-4c4f-bc61-573c275fc52b" name="Changes" comment="Applied check on Db, student cannot enroll same course more than one time &#10;and &#10;fetch All course of given student functionality implemented">
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/BatchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/SemesterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/BatchDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/ReportDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/SemesterDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Batch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Semester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/mapper/BatchMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/mapper/SemesterMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/BatchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/SemesterRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/BatchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/SemesterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/ManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/ManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/AssessmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/AssessmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseAssessmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseAssessmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/controller/StudentCourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/DepartmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/DepartmentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/AddressDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/AddressDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/AssessmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/AssessmentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/CourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/CourseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseAssessmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseAssessmentDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentCourseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/dto/StudentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Assessment.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Assessment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/StudentCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/StudentCourseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourseAssessment.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/entity/StudentCourseAssessment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/StudentCourseAssessmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/repository/StudentCourseAssessmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/AssessmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/AssessmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseAssessmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseAssessmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +152,15 @@
       <workItem from="1683002293557" duration="29143000" />
       <workItem from="1683090214699" duration="25468000" />
       <workItem from="1683175769476" duration="25197000" />
-      <workItem from="1683262593123" duration="13419000" />
+      <workItem from="1683262593123" duration="21065000" />
+      <workItem from="1683460789324" duration="22884000" />
+      <workItem from="1683699091213" duration="7264000" />
+      <workItem from="1683728503548" duration="7274000" />
+      <workItem from="1683782464115" duration="709000" />
+      <workItem from="1683904591003" duration="769000" />
+      <workItem from="1684127502960" duration="22324000" />
+      <workItem from="1684213765067" duration="17247000" />
+      <workItem from="1684298993274" duration="11214000" />
     </task>
     <task id="LOCAL-00001" summary="student Enrollment functionality added.">
       <created>1683177518069</created>
@@ -150,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683190270582</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Applied check on Db, student cannot enroll same course more than one time &#10;and &#10;fetch All course of given student functionality implemented">
+      <created>1683288312465</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683288312465</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +192,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="student Enrollment functionality added." />
     <MESSAGE value="student marks functionality added." />
-    <option name="LAST_COMMIT_MESSAGE" value="student marks functionality added." />
+    <MESSAGE value="Applied check on Db, student cannot enroll same course more than one time &#10;and &#10;fetch All course of given student functionality implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Applied check on Db, student cannot enroll same course more than one time &#10;and &#10;fetch All course of given student functionality implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -180,10 +214,19 @@
           <properties class="java.lang.IllegalStateException" package="java.lang" />
           <option name="timeStamp" value="75" />
         </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="112" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/6.0.7/spring-beans-6.0.7.jar!/org/springframework/beans/factory/support/ConstructorResolver.class</url>
           <line>639</line>
           <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/management/src/main/java/com/springboot/management/service/StudentCourseAssessmentService.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="126" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

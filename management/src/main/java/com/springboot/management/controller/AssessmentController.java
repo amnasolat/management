@@ -43,6 +43,9 @@ public class AssessmentController {
     public AssessmentDto updateAssessment(@RequestBody AssessmentDto assessmentDto){
         return assessmentService.updateAssessment(assessmentDto);
     }
-
+    @PostMapping("/assignAllAssessments")
+    public List<AssessmentDto> assignAllCoursesAssessments(){
+        return assessmentService.saveAllCoursesAssessments();
+    }
 
 }

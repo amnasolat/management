@@ -13,7 +13,7 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class StudentDto {
 
-    private Integer studentId;
+    private int studentId;
 
     private String studentName;
 
@@ -24,6 +24,7 @@ public class StudentDto {
 
     AddressDto addressDto;
     DepartmentDto departmentDto;
+    BatchDto batchDto;
 
 
     }

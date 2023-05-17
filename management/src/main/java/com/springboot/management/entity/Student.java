@@ -21,7 +21,7 @@ import java.util.List;
 public class Student extends BaseEntity{
     @Id
     @GeneratedValue
-    private Integer studentId;
+    private int studentId;
     private String studentName;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dob;
@@ -39,6 +39,10 @@ public class Student extends BaseEntity{
     @OneToMany(mappedBy = "student")
     @JsonIgnoreProperties("student")
     private List<StudentCourse> studentCourses;
+    @ManyToOne
+    @JsonIgnoreProperties("students")
+    @JoinColumn(name = "fk_batch_id",referencedColumnName = "batchId")
+    private Batch batch;
 
 
 //    @ManyToOne(cascade =CascadeType.ALL )

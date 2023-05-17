@@ -30,6 +30,8 @@ public class StudentCourseService {
     private AddressMapper addressMapper;
     @Autowired
     private DepartmentMapper departmentMapper;
+    @Autowired
+    private SemesterMapper semesterMapper;
 
     public StudentCourseDto saveStudentCourse(StudentCourseDto studentCourseDto) {
         if (studentCourseDto.getStudentDto() == null && studentCourseDto.getCourseDto() == null) {
@@ -117,7 +119,6 @@ public class StudentCourseService {
     public List<StudentCourseDto> getCoursesbyStudentId(StudentDto studentDto) {
         int id1 = studentDto.getStudentId();
         List<StudentCourse> studentCourseList = studentCourseRepository.findAllNotDeleted();
-        //  List<StudentCourse> Data = new ArrayList<>();
         List<StudentCourseDto> studentCourseDtos = new ArrayList<>();
         for (StudentCourse studentCourse : studentCourseList) {
             int id2 = studentCourse.getStudent().getStudentId();
@@ -125,14 +126,19 @@ public class StudentCourseService {
                Student student= studentCourse.getStudent();
                Course course=studentCourse.getCourse();
                Department department=course.getDepartment();
-//               StudentDto studentDto1=studentMapper.entityToDto(student);
+               Semester semester=studentCourse.getSemester();
+               StudentDto studentDto1=studentMapper.entityToDto(student);
                CourseDto courseDto=courseMapper.entityToDto(course);
+               SemesterDto semesterDto=semesterMapper.entityToDto(semester);
                DepartmentDto departmentDto=departmentMapper.entityToDto(department);
                 StudentCourseDto studentCourseDto = studentCourseMapper.entityToDto(studentCourse);
-//                studentCourseDto.setStudentDto(studentDto1);
+
                 courseDto.setDepartmentDto(departmentDto);
                 studentCourseDto.setCourseDto(courseDto);
+                studentCourseDto.setStudentDto(studentDto1);
+                studentCourseDto.setSemesterDto(semesterDto);
                 studentCourseDtos.add(studentCourseDto);
+
 
             }
         }

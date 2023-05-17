@@ -1,6 +1,7 @@
 package com.springboot.management;
 
 
+import com.springboot.management.service.StudentCourseAssessmentService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

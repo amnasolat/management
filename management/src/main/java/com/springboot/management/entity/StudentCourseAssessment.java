@@ -2,11 +2,12 @@ package com.springboot.management.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@ToString(exclude = {"studentCourse","assessment"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -14,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class StudentCourseAssessment extends BaseEntity {
     @Id
     @GeneratedValue
-    private int studentCourseAssessmentId;
-    private int obtainedMarks;
+    private Integer studentCourseAssessmentId;
+    private Integer obtainedMarks;
     @ManyToOne
     @JsonIgnoreProperties("studentCourseAssessments")
     @JoinColumn(name = "fk_student_course_id",referencedColumnName = "studentCourseId")
